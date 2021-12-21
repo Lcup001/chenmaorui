@@ -18,7 +18,7 @@
         controlsCurrentColor:"#ff6600",//当前控制按钮的颜色
    });
    /* 轮播切换 */
-   //默认后面两个轮播隐藏
+   //默认后面两个轮播隐藏w
    $('.ez-banner:gt(0)').hide();
    //给导航绑定点击事件
    $('.ez-title ul li').on('mouseenter',function () {
@@ -29,4 +29,18 @@
        //显示对应内容
        $('.ez-banner').eq(index).show().siblings().hide();
    })
+    //左右滑动
+    var index = 0;
+    $('.change').click(function () {
+         // 自增
+         index++;
+         //边界判断
+         //让里面的 inner-box 运动
+         $('.inner-box').stop(true).animate({left:-index * 1200},function () {
+             if (index === 3) {
+                 index = 0;
+                 $('.inner-box').css('left',0);
+             }
+         })
+     })
  })
